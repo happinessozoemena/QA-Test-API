@@ -9,7 +9,7 @@ test('displays success message on successful registration', async () => {
 
   render(<Register />);
   
-  fireEvent.change(screen.getByPlaceholderText(/Username/i), { target: { value: 'udun' } });
+  fireEvent.change(screen.getByPlaceholderText(/Username/i), { target: { value: 'ozoemena' } });
   fireEvent.change(screen.getByPlaceholderText(/Password/i), { target: { value: '12345' } });
   fireEvent.click(screen.getByText(/Register/i));
 
@@ -21,7 +21,7 @@ test('displays error message on failed registration', async () => {
 
   render(<Register />);
   
-  fireEvent.change(screen.getByPlaceholderText(/Username/i), { target: { value: 'udun' } });
+  fireEvent.change(screen.getByPlaceholderText(/Username/i), { target: { value: 'ozoemena' } });
   fireEvent.change(screen.getByPlaceholderText(/Password/i), { target: { value: '12345' } });
   fireEvent.click(screen.getByText(/Register/i));
 
