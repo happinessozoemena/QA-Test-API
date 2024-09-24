@@ -6,8 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 run npm install
-run $env:NODE_OPTIONS = "--openssl-legacy-provider" 
-
+###  npm install
+### '$env:NODE_OPTIONS = "--openssl-legacy-provider"
 ### `npm start`
 
 Runs the app in the development mode.\
