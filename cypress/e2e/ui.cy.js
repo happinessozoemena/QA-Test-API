@@ -48,7 +48,7 @@ describe('User Interaction Tests', () => {
     beforeEach(() => {
       // Log in before performing item management actions
       cy.visit('http://localhost:3000/login');
-      cy.get('input[placeholder="Username"]').type('udun');
+      cy.get('input[placeholder="Username"]').type('ozoemena');
       cy.get('input[placeholder="Password"]').type('12345');
       cy.get('button[type="submit"]').click();
     });
@@ -56,8 +56,8 @@ describe('User Interaction Tests', () => {
     it('Should create a new item', () => {
       cy.visit('http://localhost:3000/items');
       cy.get('button#create-new-item').click();
-      cy.get('input[placeholder="Item Name"]').type('New Item');
-      cy.get('textarea[placeholder="Item Description"]').type('Description of new item');
+      cy.get('input[placeholder="Item Name"]').type('Close-Up');
+      cy.get('textarea[placeholder="Item Description"]').type('This is a toothpaste used in washing teeth');
       cy.get('button[type="submit"]').click();
       cy.get('.success-message').should('contain', 'Item created successfully');
     });

@@ -1,0 +1,879 @@
+{
+	"info": {
+		"_postman_id": "8345bf3d-d74d-4770-89e6-b8ae57cafc98",
+		"name": "Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7657971",
+		"_collection_link": "https://speeding-comet-347374.postman.co/workspace/QA-Mini-Project~07fb4074-bc71-4080-867f-16a9b5031d62/collection/7657971-8345bf3d-d74d-4770-89e6-b8ae57cafc98?action=share&source=collection_link&creator=7657971"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response has token\", function () {\r",
+									"    let response = pm.response.json();\r",
+									"\r",
+									"if (response.accessToken) {\r",
+									"    pm.collectionVariables.set(\"token\", response.accessToken);\r",
+									"    \r",
+									"    console.log(\"Access token updated successfully!\");\r",
+									"} else {\r",
+									"    console.log(\"Access token not found in the response.\");\r",
+									"}\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"joe23\",\r\n    \"password\": \"josh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/auth/login",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Logout Success\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"  var jsonData = pm.response.json();\r",
+									"  pm.expect(jsonData.message).to.eql(\"Logged out successfully\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"joe23\",\r\n    \"password\": \"josh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/auth/logout",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"pm.test(\"Error message is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"User not Found\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"joe230\",\r\n    \"password\": \"joshua\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/auth/login",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response has user ID\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"jam238\",\r\n    \"password\": \"pass005\",\r\n    \r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/auth/signup",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Duplicate User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Username already exists\");\r",
+									"});\r",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"jam225\",\r\n    \"password\": \"pass002\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/auth/signup",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item Management",
+			"item": [
+				{
+					"name": "View Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/items",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response has item ID\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Close-Up\",\r\n    \"description\": \"This is a toothpaste used in washing teeth\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/items",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response has item ID\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Close-Up\",\r\n    \"description\": \"This is a toothpaste used in washing teeth\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/items/",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"items",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response has item ID\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Close-Up\",\r\n    \"description\": \"This is a toothpaste used in washing teeth\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/items",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Duplicate Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"pm.test(\"Response has item ID\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"id\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Close-Up\",\r\n    \"description\": \"This is a toothpaste used in washing teeth\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/items",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"items"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "UpdateUser",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response has updated email\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.email).to.eql(\"updateduser@example.com\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"updateduser@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/users/31eda711-71cc-4177-bdb8-f333fbcb22ea",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								"31eda711-71cc-4177-bdb8-f333fbcb22ea"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"updateduser@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/users/?31eda711-71cc-4177-bdb8-f333fbcb22ea",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "31eda711-71cc-4177-bdb8-f333fbcb22ea",
+									"value": null
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/users/?be34b583-f465-4f69-be30-b170a32125c1",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "be34b583-f465-4f69-be30-b170a32125c1",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Access Control",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"pm.test(\"Error message is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.message).to.eql(\"Access denied\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://qa-test-9di7.onrender.com/users/?allow-any-characters-here",
+							"protocol": "https",
+							"host": [
+								"qa-test-9di7",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "allow-any-characters-here",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
