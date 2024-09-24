@@ -1,4 +1,3 @@
-js
 const request = require('supertest');
 const app = require('.https://qa-test-9di7.onrender.com./app'); // Your Express app or API server
 
@@ -8,7 +7,7 @@ describe('Authentication API', () => {
   it('should login a user with valid credentials', async () => {
     const res = await request(app)
       .post('/login')
-      .send({ username: 'joe2', password: 'josh' });
+      .send({ username: 'ozoemena', password: '12345' });
     
     expect(res.statusCode).toEqual(200);
     expect(res.body).toHaveProperty('token');

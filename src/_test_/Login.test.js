@@ -17,7 +17,7 @@ test('displays success message on successful login', async () => {
   render(<Login />);
   
   // Simulate user input
-  fireEvent.change(screen.getByPlaceholderText(/Username/i), { target: { value: 'uduna' } });
+  fireEvent.change(screen.getByPlaceholderText(/Username/i), { target: { value: 'happy' } });
   fireEvent.change(screen.getByPlaceholderText(/Password/i), { target: { value: '12345' } });
 
   // Simulate clicking the login button

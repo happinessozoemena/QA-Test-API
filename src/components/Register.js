@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const Register = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [username, setUsername] = useState('udun');
+  const [password, setPassword] = useState('12345');
+  const [message, setMessage] = useState('Login Successful');
 
   const handleRegister = async (e) => {
     e.preventDefault();

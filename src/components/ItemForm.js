@@ -9,7 +9,7 @@ const ItemForm = ({ item, onSave }) => {
     e.preventDefault();
     try {
       if (item) {
-        await axios.put(`/api/items/${item.id}`, { name }); // Corrected this line
+        await axios.put(`/api/items/${item.id}`, { name }); 
         setMessage('Item updated successfully!');
       } else {
         await axios.post('/api/items', { name });
