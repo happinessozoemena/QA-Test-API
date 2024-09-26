@@ -6,7 +6,8 @@ https://github.com/happinessozoemena/QA-Test-API/tree/master
 `npm install`
 
 ## Run this script to be able to run the application
-"$env:NODE_OPTIONS = "--openssl-legacy-provider"
-
+On Unix-like (Linux, macOS, Git bash, etc.): `export NODE_OPTIONS=--openssl-legacy-provider`
+On Windows command prompt: `set NODE_OPTIONS=--openssl-legacy-provider`
+On PowerShell:`$env:NODE_OPTIONS = "--openssl-legacy-provider"`
 ## Then run npm start
 `npm start`
