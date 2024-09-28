@@ -1,16 +1,15 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
 const Register = () => {
-  const [username, setUsername] = useState('udun');
-  const [password, setPassword] = useState('12345');
-  const [message, setMessage] = useState('Login Successful');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://qa-test-9di7.onrender.com/auth/signup', { username, password });
+      const response = await axios.post('/api/register', { username, password });
       setMessage('Registration successful!');
     } catch (error) {
       setMessage('Registration failed!');
@@ -30,5 +29,5 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Register
 
