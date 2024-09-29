@@ -9,7 +9,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/register', { username, password });
+      const response = await axios.post('https://qa-test-9di7.onrender.com/auth/signup', { username, password });
       setMessage('Registration successful!');
     } catch (error) {
       setMessage('Registration failed!');

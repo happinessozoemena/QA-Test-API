@@ -1,4 +1,3 @@
-js
 describe('User Management API', () => {
   it('should create a new user', async () => {
     const res = await request(app)
