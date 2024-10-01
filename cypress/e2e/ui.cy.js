@@ -28,7 +28,7 @@ describe('User Interaction Tests', () => {
       cy.get('input[placeholder="Username"]').type('newUser');
       cy.get('input[placeholder="Password"]').type('newPassword');
       cy.get('button[type="submit"]').click();
-      cy.get('#root').should('contain', 'Registration successful!');
+      cy.get('#root').should('be.visible', 'Registration successful!');
     });
   });
 

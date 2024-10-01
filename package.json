@@ -43,7 +43,8 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@testing-library/jest-dom": "^6.5.0",
-    "cypress": "^13.14.2"
+    "cypress": "^13.14.2",
+    "supertest": "^7.0.0"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "cypress.config.js",

@@ -20,7 +20,7 @@ describe("API End-to-End Tests", () => {
           method: "GET",
           url: "https://qa-test-9di7.onrender.com/items",
           headers: {
-            Authorization: `Bearer ${accessToken}`,  // Use backticks here
+            Authorization: `Bearer ${accessToken}`, 
           },
         }).then((itemResponse) => {
           expect(itemResponse.status).to.eq(200);

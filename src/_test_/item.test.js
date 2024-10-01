@@ -1,10 +1,9 @@
-s
 describe('Item Management API', () => {
   it('should create a new item', async () => {
     const res = await request(app)
       .post('/items')
       .send({ name: 'Item 1' })
-      .set('Authorization', `Bearer ${eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyOWRkOTA3LWNmMTUtNGI4Yy04MzU4LTIwM2ZkODgxZjFjZCIsInVzZXJuYW1lIjoiam9lIiwiaWF0IjoxNzIzMTMwNDg4fQ.L0veYqRdR6-Lh0L8UnSxNY4OWH8jES1SvGdxDKXI-Bg}`); // Add token to the request header
+      .set('Authorization', `Bearer ${accessToken}`); 
 
     expect(res.statusCode).toEqual(201);
     expect(res.body).toHaveProperty('id');

@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('.https://qa-test-9di7.onrender.com./app'); // Your Express app or API server
+const app = require('https://qa-test-9di7.onrender.com/auth/signup/app'); // Your Express app or API server
 
 describe('Authentication API', () => {
   let token;
@@ -10,8 +10,8 @@ describe('Authentication API', () => {
       .send({ username: 'ozoemena', password: '12345' });
     
     expect(res.statusCode).toEqual(200);
-    expect(res.body).toHaveProperty('token');
-    token = res.body.token;
+    expect(res.body).toHaveProperty('accesssToken');
+    token = res.body.accessToken;
   });
 
   it('should not login a user with invalid credentials', async () => {
