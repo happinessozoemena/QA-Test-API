@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('.https://qa-test-9di7.onrender.com./app'); // Adjust the path to your app accordingly
+const app = require('.https://qa-test-9di7.onrender.com./app'); 
 
 describe('User Management API', () => {
   it('should create a new user', async () => {
@@ -7,7 +7,7 @@ describe('User Management API', () => {
       .post('/users')
       .send({ username: 'newuser', password: 'newpass' });
     
-    expect(res.statusCode).toEqual(201); // Adjust the expected status code
+    expect(res.statusCode).toEqual(201); 
     expect(res.body.username).toEqual('newuser');
   });
 });

@@ -11,3 +11,9 @@ On Windows command prompt: `set NODE_OPTIONS=--openssl-legacy-provider`
 On PowerShell:`$env:NODE_OPTIONS = "--openssl-legacy-provider"`
 ## Then run npm start
 `npm start`
+
+## It will Navigate to something like this
+'localhost:3000'
+## you can run
+ localhost:3000/Register
+ localhost:3000/Login
